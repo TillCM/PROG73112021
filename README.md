@@ -31,4 +31,4 @@
 [how to push your project to Github](https://www.youtube.com/watch?v=KlggT7ZjKOw)
 
 9. Add me to your repo (user name = TillCM)
-[How to add a collaborator to a Github Repo] (https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)
+[How to add a collaborator to a Github Repo](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)
