@@ -1,12 +1,12 @@
 # PROG7311 2021
 
 # LAC Task one:
-##Ensure that you have completed the following before you attempt LAC 1:
+## Ensure that you have completed the following before you attempt LAC 1:
 1. You have installed Ubuntu on Hyper-V
 2. You have installed the .netcore SDK on your  Ubuntu Virtual Machine 
 3. You have installed Visual Studio Code on Ubuntu Virtual Machine 
 
-###You should now be able create a .netcore web api using the dotnet tool. Read this article and follow the steps to create the API. 
+### You should now be able create a .netcore web api using the dotnet tool. Read this article and follow the steps to create the API. 
 
 1. Use the terminal to create a folder called dev in your home folder. 
 1.1. Some help on how to make and navigate folders in Ubuntu here :
