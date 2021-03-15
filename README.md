@@ -45,4 +45,43 @@ You should be familiar with OOP in terms of :
 4. Polymorphism 
 
 We now need to extend on these topics by looking at what SOLID and Loosely coupled applications are 
-We are going to start with developing a class diagram for the following system. 
+We are going to start with developing a class diagram for the following functional and non functional requiremetns :
+You have been contacted by VarsityCollege to create a Result calculator that students can use to pre-calculate their results when needed. Here is a reminder of how results are calculated for BCAD 1
+### PROGf5112
+1. ICE = 10%
+2. Assignment 1 = 25%
+3. Test = 35%
+4. Exam = 30% 
+We first calculate cass which counts for 70% of the course grade (in this example) 
+CASS = (Mark for ICE + Mark for Assignment 1 + Mark for Test)/70*100*
+We then calculate the final result Fina result = (CASS+ Exam)/100*100*
+
+### PRLD5112:
+1. ICE = 10%
+2. Assignment = 50%
+3. FInal Exam  = 40%
+
+### PRSE6212
+1. ICE = 10%
+2. Assignment = 30%
+3. Assignment = 35%
+4. Final Exam  = 35%
+
+You are required to design a system that allows an administrator to create a course that can contain any number of modules. The modules can contain any of the following assessment points :
+1. *One Formative Assessment Modules* Contains ICE of 10% , a Single other assessment of 50% and an Final ExM of 40%
+2. *Two Formative Assessment Modules* Containd ICE of 10%, an assessment that counts 30% , and assessment that counts 35% and a Final exam of 35%
+3. *Three Formative Assessment Modules* Contains ICE of 10%, three assessments of 20% each and a inal exam of 30%
+
+The assessment weightings will change every year , they cannot be hard coded. THe module names will change every year they cannot be hard coded 
+You can use the following links to help you:
+1. [Understanding Losely coupled Applications](https://nordicapis.com/the-difference-between-tight-coupling-and-loose-coupling/)
+2. [What is SOLID](https://mari-azevedo.medium.com/s-o-l-i-d-principles-what-are-they-and-why-projects-should-use-them-50b85e4aa8b6)
+
+DONT FREAK OUT, THIS IS NEW, IT IS WEE BIT TRICKY ..... BUT WE GOT THIS..... WE CAN DO THIS...... 
+
+## Final instructions
+1. Work in groups ( you are welcome to use the Discord server - even those of you who have said terrible things about it)
+2. Create your class diagram using draw.io or Lucidchart (ONLINE just google)
+3. We will get your diagrams into your repos tommorow. 
+
+
