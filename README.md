@@ -32,3 +32,17 @@
 
 9. Add me to your repo (user name = TillCM)
 [How to add a collaborator to a Github Repo](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)
+
+
+# PROG7311 2021
+
+# LAC Task Two: Advanced OOP Concepts 
+
+You should be familiar with OOP in terms of :
+1. Abstraction
+2. Inheritance
+3. Encapsulation
+4. Polymorphism 
+
+We now need to extend on these topics by looking at what SOLID and Loosely coupled applications are 
+We are going to start with developing a class diagram for the following system. 
