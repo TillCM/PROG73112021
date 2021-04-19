@@ -84,4 +84,105 @@ DONT FREAK OUT, THIS IS NEW, IT IS WEE BIT TRICKY ..... BUT WE GOT THIS..... WE 
 2. Create your class diagram using draw.io or Lucidchart (ONLINE just google)
 3. We will get your diagrams into your repos tommorow. 
 
+## Microservices, Docker and Docker Compose 
+1. You need to ensure that you have a running web api that implements the factory pattern to return JSON data.... 
+2. You then need to containarize your app by making use of Docker. You can find out more about docker here :
+3. [What is docker ]("https://www.youtube.com/watch?v=_dfLOzuIg2o&t=70s")
+4. Here is some help to containarize your wep api 
 
+
+
+```# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /app
+
+# install debug tools
+
+#RUN apt-get install tree
+
+#Environment Variables 
+#ENV ConnectionStrings: "Data Source=db,1433;Database=teamfu;User Id=SA;Password=Your_password123;"
+
+# copy csproj and restore as distinct layers
+COPY src/com.teamfu.be/team-reece/team-reece.csproj ./
+#RUN tree
+RUN dotnet restore team-reece.csproj
+RUN ls -l
+
+# copy everything else and build app
+COPY src/com.teamfu.be/team-reece/. /app/team-reece/
+WORKDIR /app/team-reece
+RUN mkdir /publishedApp
+ENV DATABASE_SERVER =db
+RUN dotnet publish team-reece.csproj -c release -o /publishedApp
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
+ENV TZ=Africa/Johannesburg
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y tzdata curl
+WORKDIR /app
+COPY --from=build /publishedApp .
+
+HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1
+
+ENTRYPOINT ["dotnet", "team-reece.dll"]
+```
+5. This Dockerfile will create a Docker Image  wich will contain your app. You will see that I am copying over my own app in the example. 
+6. Create a DockerFile to create a Docker Image that contains your web api 
+
+## SQL Server with Docker-comple 
+[what is docker-compose/]("https://www.youtube.com/watch?v=vQmk9moF8vw")
+
+7. You now need to start your webapp with docker-compose 
+8. AND you need to add a SQL server docker container user docker-compose 
+```version: '3.8'
+services:
+  webapp:
+    image: team_reece/teamfu:latest
+    build: 
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    environment: 
+    - DATABASE_SERVER=db
+    - DATABASE_PORT=1433
+    - DATABASE_USER=SA
+    - DATABASE_PASSWORD=Your_password123
+    - DATABASE_NAME=teamfu 
+    networks: 
+     - team-reece
+  ```
+  
+  8. Here is a docker-compose file that creates a SQL Server 
+
+```version: "3.8"
+services:
+  
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    restart: always
+    environment: 
+      MSSQL_TCP_PORT: 1433
+      MSSQL_PID: Developer
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    extra_hosts: 
+      - "localhost:192.168.10.55"  
+    user: root 
+    networks: 
+      - team-reece
+    ports: 
+      - 1433:1433
+    volumes:
+      - ./mssql/data:/var/opt/mssql/data
+      - ./mssql/log:/var/opt/mssql/log
+      - ./mssql/secrets:/var/opt/mssql/secrets
+      - ./mssql/sql:/tmp/sql
+```
+
+We finally need to ensure that our two containers are talking to each other and that our web api can deliver data out of db..
+
+COME TO CLASS IF YOU ARE UNSURE !!!!!!!
